@@ -11,25 +11,15 @@ spring:
 server:
   port: 8762
 
-#keycloak:
-#  realm: cydeo-dev
-#  auth-server-url: http://${KEYCLOAK}:8080/auth
-#  ssl-required: none
-#  resource: ticketing-app
-#  credentials:
-#    secret: H60klvIQaHbGzOE8yDTDknMp2D1oYBof
-#  use-resource-role-mappings: true
-#  bearer-only: true
-
 eureka:
   instance:
-#    preferIpAddress: true
-#    ipAddress: localhost
+    preferIpAddress: true
+    ipAddress: ${HOST}
     status-page-url-path: ${management.context-path}/info
     health-check-url-path: ${management.context-path}/health
   client:
     serviceUrl:
-      defaultZone: http://3.72.87.233:8761/eureka/
+      defaultZone: http://${EUREKA}:8761/eureka/
 
 management:
   endpoint:
@@ -39,7 +29,7 @@ management:
     web:
       exposure:
         include: "*"
-  context-path: http://localhost:${server.port}/actuator
+  context-path: http://${HOST}:${server.port}/actuator
 
 info:
   application:
