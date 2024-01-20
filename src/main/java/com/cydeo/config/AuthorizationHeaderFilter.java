@@ -10,9 +10,11 @@ public class AuthorizationHeaderFilter implements GatewayFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+
         ServerHttpRequest request = exchange.getRequest();
 
         if (request.getHeaders().containsKey("Authorization")) {
+
             String authorizationHeader = request.getHeaders().getFirst("Authorization");
 
             ServerHttpRequest modifiedRequest = request.mutate()
@@ -20,6 +22,7 @@ public class AuthorizationHeaderFilter implements GatewayFilter {
                     .build();
 
             return chain.filter(exchange.mutate().request(modifiedRequest).build());
+
         }
 
         return chain.filter(exchange);
