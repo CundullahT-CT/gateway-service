@@ -23,6 +23,7 @@ public class AuthorizationHeaderFilter implements GatewayFilter {
         }
 
         return chain.filter(exchange);
+
     }
 
 }

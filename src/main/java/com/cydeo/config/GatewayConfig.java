@@ -10,6 +10,7 @@ public class GatewayConfig {
 
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder, AuthorizationHeaderFilter authHeaderFilter) {
+
         return builder.routes()
                 .route("user-service", r -> r
                         .path("/user-service/**")
@@ -34,8 +35,8 @@ public class GatewayConfig {
                                 .rewritePath("/task-service/(?<path>.*)", "/${path}")
                         )
                         .uri("lb://task-service")
-                )
-                .build();
+                ).build();
+
     }
 
     @Bean

@@ -18,7 +18,9 @@ public class CorsConfig {
 
     @Bean
     public CorsWebFilter corsWebFilter() {
+
         final CorsConfiguration corsConfig = new CorsConfiguration();
+
         corsConfig.setAllowedOrigins(Collections.singletonList("http://" + keycloakIP + ":8080"));
         corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"));
         corsConfig.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Content-Type", "Authorization"));
@@ -27,6 +29,7 @@ public class CorsConfig {
         source.registerCorsConfiguration("/**", corsConfig);
 
         return new CorsWebFilter(source);
+
     }
 
 }
