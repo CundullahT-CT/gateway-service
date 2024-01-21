@@ -13,7 +13,7 @@ public class ResourceServerSecurityConfig {
     public SecurityWebFilterChain configureResourceServer(ServerHttpSecurity httpSecurity) {
 
         return httpSecurity
-                .authorizeExchange().pathMatchers("/actuator/health/**").permitAll()
+                .authorizeExchange().pathMatchers("/actuator/**").permitAll()
                 .pathMatchers(HttpMethod.GET, "/webjars/**").permitAll()
                 .pathMatchers(HttpMethod.GET, "/swagger-ui.html").permitAll()
                 .pathMatchers(HttpMethod.GET, "/swagger-resources/**").permitAll()
